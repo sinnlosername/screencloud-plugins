@@ -61,13 +61,9 @@ class ShellUploader():
 			ScreenCloud.setError("Invalid characters in command '" + command + "'")
 			return False
 		try:
-			if self.outputIsUrl:
-				pipe = subprocess.PIPE
-			else:
-				pipe = None
-
-
-			p = subprocess.Popen(command.split(), stdout=pipe)
+			
+			pipe = subprocess.PIPE
+			p = subprocess.Popen(command, stdout=pipe)
 			p.wait()
 			if p.returncode > 0:
 				ScreenCloud.setError("Command " + command + " did not return 0")
